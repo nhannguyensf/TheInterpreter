@@ -17,4 +17,84 @@ class RunTimeStack {
         framePointer.add(0);
     }
 
+    public String dump() {
+        StringBuilder output = new StringBuilder();
+        // Use iterator to iterate over framePointer stack and runTimeStack list
+        for (int i = 0; i < framePointer.size(); i++) {
+            output.append("[");
+            int start;
+            int end;
+
+            start = framePointer.get(i);
+            if (i == framePointer.size() - 1) {
+                end = runTimeStack.size();
+            } else {
+                end = framePointer.get(i + 1);
+            }
+
+            for (int j = start; j < end; j++) {
+                output.append(runTimeStack.get(j));
+                if (j != end - 1) {
+                    output.append(",");
+                }
+            }
+            output.append("] ");
+        }
+        return output.toString();
+    }
+
+    public int push(int value) {
+        this.runTimeStack.add(value);
+        return value;
+    }
+
+    public int peek() {
+        return this.runTimeStack.get(this.runTimeStack.size() - 1);
+    }
+
+    public int pop() {
+        return this.runTimeStack.remove(this.runTimeStack.size() - 1);
+    }
+
+    public int store(int offsetFromFramePointer) {
+        int top = pop();
+        int currentFrameStart = framePointer.peek();
+        this.runTimeStack.set(currentFrameStart + offsetFromFramePointer, top);
+        return top;
+    }
+
+    public int load(int offsetFromFramePointer) {
+        int currentFrameStart = framePointer.peek();
+        int loadedValue = this.runTimeStack.get(currentFrameStart + offsetFromFramePointer);
+        push(loadedValue);
+        return loadedValue;
+    }
+
+    public void newFrameAt(int offsetFromTopOfRunStack) {
+        int newFramePointer = this.runTimeStack.size() - offsetFromTopOfRunStack;
+        framePointer.push(newFramePointer);
+    }
+
+    public void popFrame() {
+        int topFrame = pop();
+        int lastFrameStart = framePointer.pop();
+        for (int i = this.runTimeStack.size() - 1; i >= lastFrameStart; i--) {
+            this.runTimeStack.remove(i);
+        }
+        push(topFrame);
+    }
+
+    public static void main(String[] args) {
+        RunTimeStack rts = new RunTimeStack();
+        rts.push(1);
+        rts.push(2);
+        rts.push(3);
+        rts.push(4);
+        rts.push(5);
+        rts.push(6);
+        rts.push(7);
+        rts.push(8);
+        rts.dump();
+
+    }
 }
