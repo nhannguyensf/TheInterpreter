@@ -2,12 +2,10 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.ArrayList;
-
 public interface ByteCode {
     static ByteCode getNewInstance(String type, String[] args) {
         return switch (type) {
-            case "HALT"-> new HaltCode(args);
+            case "HALT" -> new HaltCode(args);
             case "POP" -> new PopCode(args);
             case "FALSEBRANCH" -> new FalseBranchCode(args);
             case "GOTO" -> new GotoCode(args);
@@ -26,11 +24,5 @@ public interface ByteCode {
         };
     }
 
-//    public abstract void init(ArrayList<String> str);
-//
-    public abstract void execute(VirtualMachine vm);
-//
-//    @Override
-//    public  abstract String toString();
-
+    void execute(VirtualMachine vm);
 }

@@ -65,7 +65,7 @@ public class VirtualMachine {
 
     // To stop the program execution from a byte code.
     public void halt() {
-        isRunning = false;
+        this.isRunning = false;
     }
 
     // To peek the value at the top of the runtime stack without removing it.
