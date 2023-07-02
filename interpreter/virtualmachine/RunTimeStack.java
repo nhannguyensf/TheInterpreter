@@ -20,7 +20,7 @@ class RunTimeStack {
     public String dump() {
         StringBuilder output = new StringBuilder();
         // Use iterator to iterate over framePointer stack and runTimeStack list
-        for (int i = 0; i < framePointer.size(); i++) {
+        for (int i = 1; i < framePointer.size(); i++) {
             output.append("[");
             int start;
             int end;
@@ -84,17 +84,20 @@ class RunTimeStack {
         push(topFrame);
     }
 
-    public static void main(String[] args) {
-        RunTimeStack rts = new RunTimeStack();
-        rts.push(1);
-        rts.push(2);
-        rts.push(3);
-        rts.push(4);
-        rts.push(5);
-        rts.push(6);
-        rts.push(7);
-        rts.push(8);
-        rts.dump();
-
-    }
+//    public static void main(String[] args) {
+//        RunTimeStack rts = new RunTimeStack();
+//        rts.push(1);
+//        rts.push(2);
+//        rts.push(3);
+//        rts.push(4);
+//        rts.push(5);
+//        rts.push(6);
+//        rts.push(7);
+//        rts.push(8);
+//        rts.framePointer.push(0);
+//        rts.framePointer.push(3);
+//        rts.framePointer.push(6);
+//        System.out.println(rts.peek());
+//        System.out.print(rts.dump());
+//    }
 }
