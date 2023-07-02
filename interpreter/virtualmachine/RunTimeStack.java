@@ -84,6 +84,10 @@ class RunTimeStack {
         push(topFrame);
     }
 
+    public boolean isEmpty() {
+        return this.runTimeStack.isEmpty();
+    }
+
 //    public static void main(String[] args) {
 //        RunTimeStack rts = new RunTimeStack();
 //        rts.push(1);

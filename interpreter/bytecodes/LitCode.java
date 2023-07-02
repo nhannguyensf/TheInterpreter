@@ -7,7 +7,7 @@ public class LitCode implements ByteCode {
     private int valueToPush;
 
     public LitCode(String[] args) {
-        valueToPush = Integer.parseInt(args[1]);
+        this.valueToPush = Integer.parseInt(args[1]);
         if (args.length == 3) {
             this.id = args[2];
         }
@@ -15,7 +15,7 @@ public class LitCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        vm.pushRunStack(valueToPush);
+        vm.pushRunStack(this.valueToPush);
     }
 
     @Override

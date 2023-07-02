@@ -37,7 +37,7 @@ public class VirtualMachine {
 
     // To pop a value from the runtime stack.
     public int popRunStack() {
-        return runTimeStack.pop();
+        return this.runTimeStack.pop();
     }
 
     // To store the return address when a function is called.
@@ -59,8 +59,8 @@ public class VirtualMachine {
         return programCounter;
     }
 
-    public void setProgramCounter(int pc) {
-        programCounter = pc;
+    public void setProgramCounter(int newProgramCounter) {
+        this.programCounter = newProgramCounter;
     }
 
     // To stop the program execution from a byte code.
@@ -90,6 +90,10 @@ public class VirtualMachine {
 
     // To load a variable onto the runtime stack.
     public int load(int offset) {
-        return runTimeStack.load(offset);
+        return this.runTimeStack.load(offset);
+    }
+
+    public boolean runTimeStackIsEmpty() {
+        return this.runTimeStack.isEmpty();
     }
 }
