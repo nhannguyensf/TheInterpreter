@@ -2,6 +2,8 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
+import java.util.List;
+
 public class StoreCode implements ByteCode {
     private int offset;
     private String id;
@@ -12,6 +14,11 @@ public class StoreCode implements ByteCode {
         if (args.length > 2) {
             this.id = args[2];
         }
+    }
+
+    @Override
+    public void init(List<String> args) {
+
     }
 
     @Override
@@ -26,7 +33,7 @@ public class StoreCode implements ByteCode {
     }
 
     @Override
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         String base = "STORE " + this.offset;
         if (this.id != null) {
             base += " " + this.id + "   " + this.id + "=" + this.value;

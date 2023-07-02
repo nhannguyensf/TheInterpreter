@@ -2,6 +2,8 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
+import java.util.List;
+
 public class PopCode implements ByteCode {
     private int popCount;
 
@@ -13,6 +15,11 @@ public class PopCode implements ByteCode {
     }
 
     @Override
+    public void init(List<String> args) {
+
+    }
+
+    @Override
     public void execute(VirtualMachine vm) {
         for (int i = 0; i < this.popCount && !vm.runTimeStackIsEmpty(); ++i) {
             vm.popRunStack();
@@ -20,7 +27,7 @@ public class PopCode implements ByteCode {
     }
 
     @Override
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         return "POP " + this.popCount;
     }
 }

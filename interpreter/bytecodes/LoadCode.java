@@ -2,28 +2,31 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
+import java.util.List;
+
 public class LoadCode implements ByteCode {
     private int offset;
     private String id;
 
     public LoadCode(String[] args) {
-        this.offset = Integer.parseInt(args[1]);
-        if (args.length > 2) {
-            this.id = args[2];
+    }
+
+    @Override
+    public void init(List<String> args) {
+        offset = Integer.parseInt(args.get(0));
+        if (args.size() > 1) {
+            id = args.get(1);
         }
     }
 
     @Override
     public void execute(VirtualMachine vm) {
-        if (this.id != null) {
-            System.out.println("LOAD " + this.offset + " " + this.id + "\t<load " + this.id + ">");
-        } else {
-            System.out.println("LOAD " + this.offset);
-        }
+        int value = vm.load(offset);
+        vm.pushRunStack(value);
     }
 
     @Override
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         if (this.id != null) {
             return "LOAD " + this.offset + " " + this.id + "\t<load " + this.id + ">";
         } else {

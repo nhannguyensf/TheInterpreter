@@ -2,6 +2,9 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface ByteCode {
     static ByteCode getNewInstance(String type, String[] args) {
         return switch (type) {
@@ -24,5 +27,9 @@ public interface ByteCode {
         };
     }
 
+    void init(List<String> args);
+
     void execute(VirtualMachine vm);
+
+    String toString(VirtualMachine vm);
 }
