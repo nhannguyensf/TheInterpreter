@@ -28,7 +28,7 @@ public interface ByteCode {
 
 //    public abstract void init(ArrayList<String> str);
 //
-//    public abstract void executeProgram(VirtualMachine VM);
+    public abstract void execute(VirtualMachine vm);
 //
 //    @Override
 //    public  abstract String toString();
