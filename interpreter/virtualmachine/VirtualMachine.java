@@ -2,6 +2,8 @@ package interpreter.virtualmachine;
 
 import interpreter.bytecodes.ByteCode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class VirtualMachine {
@@ -11,6 +13,7 @@ public class VirtualMachine {
     private final Program program;
     private int programCounter;
     private boolean isRunning;
+    private boolean isDumping;
 
     public VirtualMachine(Program program) {
         this.program = program;
@@ -46,12 +49,17 @@ public class VirtualMachine {
     }
 
     // To restore the program counter when a function returns.
-    public void popReturnAddress() {
+    public int popReturnAddress() {
         if (!returnAddress.isEmpty()) {
             programCounter = returnAddress.pop();
         } else {
             isRunning = false;
         }
+        return returnAddress.pop();
+    }
+
+    public Program getProgram() {
+        return this.program;
     }
 
     // To get and set the program counter.
@@ -93,7 +101,30 @@ public class VirtualMachine {
         return this.runTimeStack.load(offset);
     }
 
+    public ArrayList<Integer> getArgs(int numArgs) {
+        ArrayList<Integer> args = new ArrayList<>();
+        for (int i = 0; i < numArgs; i++) {
+            args.add(this.runTimeStack.pop());
+        }
+        return args;
+    }
+
     public boolean runTimeStackIsEmpty() {
         return this.runTimeStack.isEmpty();
+    }
+
+    public void emptyCurrentFrame() {
+        int frameStartIndex = this.runTimeStack.getFramePointerPeek();
+        while (this.runTimeStack.getSize() > frameStartIndex) {
+            this.runTimeStack.pop();
+        }
+    }
+
+    public List<Integer> getFrameArguments() {
+        return this.runTimeStack.getFrameArguments();
+    }
+
+    public void setDumping(boolean dumping) {
+        this.isDumping = dumping;
     }
 }

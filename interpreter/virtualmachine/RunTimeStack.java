@@ -48,6 +48,10 @@ class RunTimeStack {
         return value;
     }
 
+    public int getFramePointerPeek() {
+        return framePointer.peek();
+    }
+
     public int peek() {
         return this.runTimeStack.get(this.runTimeStack.size() - 1);
     }
@@ -88,6 +92,17 @@ class RunTimeStack {
         return this.runTimeStack.isEmpty();
     }
 
+    public int getSize() {
+        return this.runTimeStack.size();
+    }
+
+    public List<Integer> getFrameArguments() {
+        if (!framePointer.empty()) {
+            int startFramePointer = framePointer.peek();
+            return new ArrayList<>(runTimeStack.subList(startFramePointer, runTimeStack.size()));
+        }
+        return new ArrayList<>();
+    }
 //    public static void main(String[] args) {
 //        RunTimeStack rts = new RunTimeStack();
 //        rts.push(1);
