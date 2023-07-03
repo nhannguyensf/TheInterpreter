@@ -7,11 +7,11 @@ import java.util.List;
 public class DumpCode implements ByteCode {
     private String mode;
     public DumpCode(String[] args) {
+        this.mode = args[1];
     }
 
     @Override
     public void init(List<String> args) {
-        mode = args.get(0);
     }
 
     @Override
