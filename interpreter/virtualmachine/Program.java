@@ -1,9 +1,6 @@
 package interpreter.virtualmachine;
 
-import interpreter.bytecodes.ByteCode;
-import interpreter.bytecodes.CallCode;
-import interpreter.bytecodes.FalseBranchCode;
-import interpreter.bytecodes.GotoCode;
+import interpreter.bytecodes.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +46,14 @@ public class Program {
      */
     public void addByteCode(ByteCode c) {
         program.add(c);
+        if (c instanceof LabelCode labelCode) {
+            String label = labelCode.getLabel();
+            int address = program.size() - 1; // Index of the label in the program list
+            labelAddresses.put(label, address);
+
+            // Print the label and address for verification
+            System.out.println("Added label: " + label + ", Address: " + address);
+        }
     }
 
     /**
@@ -62,15 +67,24 @@ public class Program {
         for (ByteCode code : program) {
             if (code instanceof GotoCode gotoCode) {
                 String label = gotoCode.getLabel();
-                int address = getLabelAddress(label);
+                Integer address = labelAddresses.get(label);
+                if (address == null) {
+                    throw new IllegalArgumentException("Label not found: " + label);
+                }
                 gotoCode.setTargetAddress(address);
             } else if (code instanceof CallCode callCode) {
                 String label = callCode.getLabel();
-                int address = getLabelAddress(label);
+                Integer address = labelAddresses.get(label);
+                if (address == null) {
+                    throw new IllegalArgumentException("Label not found: " + label);
+                }
                 callCode.setAddress(address);
             } else if (code instanceof FalseBranchCode falseBranchCode) {
                 String label = falseBranchCode.getLabel();
-                int address = getLabelAddress(label);
+                Integer address = labelAddresses.get(label);
+                if (address == null) {
+                    throw new IllegalArgumentException("Label not found: " + label);
+                }
                 falseBranchCode.setTargetAddress(address);
             }
         }

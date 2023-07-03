@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 class RunTimeStack {
-
+    private static final int STACK_OVERFLOW_THRESHOLD = 1000;
     private List<Integer> runTimeStack;
     private Stack<Integer> framePointer;
 
@@ -43,9 +43,11 @@ class RunTimeStack {
         return output.toString();
     }
 
-    public int push(int value) {
+    public void push(int value) {
+        if (this.runTimeStack.size() >= STACK_OVERFLOW_THRESHOLD) {
+            throw new RuntimeException("Stack overflow");
+        }
         this.runTimeStack.add(value);
-        return value;
     }
 
     public int getFramePointerPeek() {
@@ -53,14 +55,23 @@ class RunTimeStack {
     }
 
     public int peek() {
+        if (this.runTimeStack.isEmpty()) {
+            throw new RuntimeException("Stack is empty");
+        }
         return this.runTimeStack.get(this.runTimeStack.size() - 1);
     }
 
     public int pop() {
+        if (this.runTimeStack.isEmpty()) {
+            throw new RuntimeException("Stack underflow");
+        }
         return this.runTimeStack.remove(this.runTimeStack.size() - 1);
     }
 
     public int store(int offsetFromFramePointer) {
+        if (this.framePointer.isEmpty()) {
+            throw new RuntimeException("Frame pointer stack is empty");
+        }
         int top = pop();
         int currentFrameStart = framePointer.peek();
         this.runTimeStack.set(currentFrameStart + offsetFromFramePointer, top);
@@ -68,9 +79,12 @@ class RunTimeStack {
     }
 
     public int load(int offsetFromFramePointer) {
+        if (this.framePointer.isEmpty()) {
+            throw new RuntimeException("Frame pointer stack is empty");
+        }
         int currentFrameStart = framePointer.peek();
         int loadedValue = this.runTimeStack.get(currentFrameStart + offsetFromFramePointer);
-        push(loadedValue);
+        this.push(loadedValue);
         return loadedValue;
     }
 
@@ -80,12 +94,13 @@ class RunTimeStack {
     }
 
     public void popFrame() {
-        int topFrame = pop();
-        int lastFrameStart = framePointer.pop();
-        for (int i = this.runTimeStack.size() - 1; i >= lastFrameStart; i--) {
-            this.runTimeStack.remove(i);
+        if (this.framePointer.isEmpty()) {
+            throw new RuntimeException("Frame pointer stack is empty");
         }
-        push(topFrame);
+        int frameStartIndex = framePointer.pop();
+        if (runTimeStack.size() > frameStartIndex) {
+            runTimeStack.subList(frameStartIndex, runTimeStack.size()).clear();
+        }
     }
 
     public boolean isEmpty() {

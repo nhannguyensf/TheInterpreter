@@ -13,17 +13,18 @@ public class CallCode implements ByteCode {
     private int targetAddress;
 
     public CallCode(String[] args) {
+        this.label = args[1];
     }
 
     @Override
     public void init(List<String> arguments) {
-        this.label = arguments.get(1);
-        if (label.contains("<<")) {
-            this.baseID = label.split("<<")[0];
-        } else {
-            this.baseID = label;
-        }
-        args = new ArrayList<>();
+//        this.label = arguments.get(1);
+//        if (label.contains("<<")) {
+//            this.baseID = label.split("<<")[0];
+//        } else {
+//            this.baseID = label;
+//        }
+//        args = new ArrayList<>();
     }
 
     @Override

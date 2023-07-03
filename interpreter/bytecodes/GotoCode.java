@@ -10,12 +10,10 @@ public class GotoCode implements ByteCode {
 
     public GotoCode(String[] args) {
         this.label = args[1];
-
     }
 
     @Override
     public void init(List<String> args) {
-
     }
 
     @Override

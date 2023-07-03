@@ -55,7 +55,7 @@ public class VirtualMachine {
         } else {
             isRunning = false;
         }
-        return returnAddress.pop();
+        return programCounter;
     }
 
     public Program getProgram() {
@@ -92,8 +92,8 @@ public class VirtualMachine {
     }
 
     // To store into a variable from the runtime stack.
-    public int store(int offset) {
-        return runTimeStack.store(offset);
+    public void store(int offset) {
+        runTimeStack.store(offset);
     }
 
     // To load a variable onto the runtime stack.

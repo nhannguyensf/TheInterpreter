@@ -8,12 +8,11 @@ public class BopCode implements ByteCode {
     private String operator;
 
     public BopCode(String[] args) {
+        this.operator = args[1];
     }
 
     @Override
     public void init(List<String> args) {
-        this.operator = args.get(0);
-
     }
 
     @Override

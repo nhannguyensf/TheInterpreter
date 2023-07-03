@@ -8,16 +8,16 @@ public class LabelCode implements ByteCode {
     private String label;
 
     public LabelCode(String[] args) {
+        this.label = args[1];
     }
 
     @Override
     public void init(List<String> args) {
-        this.label = args.get(0);
     }
 
     @Override
     public void execute(VirtualMachine vm) {
-        // Do nothing
+        // No functionality for LabelCode
     }
 
     @Override
