@@ -33,7 +33,7 @@ public class FalseBranchCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "FALSEBRANCH " + this.label;
     }
 }

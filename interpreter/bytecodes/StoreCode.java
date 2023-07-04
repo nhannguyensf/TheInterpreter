@@ -33,7 +33,7 @@ public class StoreCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         String base = "STORE " + this.offset;
         if (this.id != null) {
             base += " " + this.id + "   " + this.id + "=" + this.value;

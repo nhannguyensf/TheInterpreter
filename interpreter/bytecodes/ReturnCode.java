@@ -35,15 +35,15 @@ public class ReturnCode implements ByteCode {
         vm.pushRunStack(returnValue);
     }
 
-    @Override
-    public String toString(VirtualMachine vm) {
-        String baseID = id.split("<<")[0];
-        String returnValue = String.valueOf(vm.peekRunStack());
-
-        if (id.contains("<<")) {
-            return "RETURN " + id + " EXIT " + baseID + ":" + returnValue;
-        } else {
-            return "RETURN EXIT " + baseID + ":" + returnValue;
-        }
-    }
+//    @Override
+//    public String toString(VirtualMachine vm) {
+//        String baseID = id.split("<<")[0];
+//        String returnValue = String.valueOf(vm.peekRunStack());
+//
+//        if (id.contains("<<")) {
+//            return "RETURN " + id + " EXIT " + baseID + ":" + returnValue;
+//        } else {
+//            return "RETURN EXIT " + baseID + ":" + returnValue;
+//        }
+//    }
 }

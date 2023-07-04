@@ -27,7 +27,7 @@ public class PopCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "POP " + this.popCount;
     }
 }

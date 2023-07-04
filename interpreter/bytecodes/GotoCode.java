@@ -30,7 +30,7 @@ public class GotoCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "GOTO " + this.label;
     }
 }

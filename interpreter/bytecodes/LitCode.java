@@ -26,18 +26,12 @@ public class LitCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         String base = "LIT " + this.valueToPush;
         if (this.id != null) {
             base += " " + this.id + "\tint " + this.id;
         }
         return base;
     }
-
-//    public static void main(String[] args) {
-//        String[] x = {"LIT", "1"};
-//        LitCode c = new LitCode(x);
-//        System.out.println(c);
-//    }
 }
 

@@ -21,7 +21,7 @@ public class LabelCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "LABEL " + label;
     }
 

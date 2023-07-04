@@ -20,7 +20,7 @@ public class HaltCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         // Halt bytecode is to not be dumped.
         return "";
     }

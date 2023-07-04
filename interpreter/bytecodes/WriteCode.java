@@ -20,7 +20,7 @@ public class WriteCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "WRITE";
     }
 }

@@ -31,5 +31,5 @@ public interface ByteCode {
 
     void execute(VirtualMachine vm);
 
-    String toString(VirtualMachine vm);
+//    String toString(VirtualMachine vm);
 }

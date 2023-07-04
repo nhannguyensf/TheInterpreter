@@ -40,11 +40,11 @@ public class CallCode implements ByteCode {
         return this.label;
     }
 
-    @Override
-    public String toString(VirtualMachine vm) {
-        String argsString = vm.getFrameArguments().stream()
-                .map(String::valueOf)  // convert each integer to string
-                .collect(Collectors.joining(","));  // join them with comma
-        return "CALL " + this.label + " " + baseID + "(" + argsString + ")";
-    }
+//    @Override
+//    public String toString(VirtualMachine vm) {
+//        String argsString = vm.getFrameArguments().stream()
+//                .map(String::valueOf)  // convert each integer to string
+//                .collect(Collectors.joining(","));  // join them with comma
+//        return "CALL " + this.label + " " + baseID + "(" + argsString + ")";
+//    }
 }
