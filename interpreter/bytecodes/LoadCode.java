@@ -22,17 +22,8 @@ public class LoadCode implements ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         int value = vm.load(offset);
-        //vm.pushRunStack(value);
     }
 
-//    @Override
-//    public String toString(VirtualMachine vm) {
-//        if (this.id != null) {
-//            return "LOAD " + this.offset + " " + this.id + "\t<load " + this.id + ">";
-//        } else {
-//            return "LOAD " + this.offset;
-//        }
-//    }
     public String toString() {
         if (this.id != null) {
             return "LOAD " + this.offset + " " + this.id + "\t<load " + this.id + ">";

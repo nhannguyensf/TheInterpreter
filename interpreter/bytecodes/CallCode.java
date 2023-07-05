@@ -29,14 +29,7 @@ public class CallCode implements ByteCode {
     public void execute(VirtualMachine vm) {
         vm.pushReturnAddress(vm.getProgramCounter());
         vm.setProgramCounter(targetAddress);
-//        if (!vm.getFrameArguments().isEmpty()) {
-//            for (int i : vm.getFrameArguments()) {
-//                this.args = this.args + i;
-//            }
-//        }
-        if (vm.getFrameArguments().size() > 3) {
-            this.args = (vm.getFrameArguments().toString()).substring(1, vm.getFrameArguments().size() - 1);
-        }
+        this.args = (vm.getFrameArguments().toString()).substring(1, vm.getFrameArguments().toString().length() - 1);
     }
 
     public void setAddress(int address) {
