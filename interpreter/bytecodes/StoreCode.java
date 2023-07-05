@@ -23,20 +23,20 @@ public class StoreCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        value = vm.popRunStack();
-        vm.store(offset);
-        if (id != null) {
-            System.out.println("STORE " + offset + " " + id + "   " + id + "=" + value);
-        } else {
-            System.out.println("STORE " + offset);
-        }
+     //   value = vm.popRunStack();
+           value =  vm.store(offset);
+//        if (id != null) {
+//            System.out.println("STORE " + offset + " " + id + "   " + id + "=" + value);
+//        } else {
+//            System.out.println("STORE " + offset);
+//        }
     }
 
     @Override
     public String toString() {
         String base = "STORE " + this.offset;
         if (this.id != null) {
-            base += " " + this.id + "   " + this.id + "=" + this.value;
+            base += " " + this.id + "\t" + this.id + " = " + this.value;
         }
         return base;
     }

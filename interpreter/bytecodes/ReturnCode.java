@@ -5,7 +5,8 @@ import interpreter.virtualmachine.VirtualMachine;
 import java.util.List;
 
 public class ReturnCode implements ByteCode {
-    private String id;
+    private String id = "";
+    private int returnValue;
 
     public ReturnCode(String[] args) {
     }
@@ -20,7 +21,7 @@ public class ReturnCode implements ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         // Save the top of the runtime stack as the return value
-        int returnValue = vm.peekRunStack();
+        this.returnValue = vm.peekRunStack();
 
         // Empty the current frame
         vm.emptyCurrentFrame();
@@ -35,15 +36,13 @@ public class ReturnCode implements ByteCode {
         vm.pushRunStack(returnValue);
     }
 
-//    @Override
-//    public String toString(VirtualMachine vm) {
-//        String baseID = id.split("<<")[0];
-//        String returnValue = String.valueOf(vm.peekRunStack());
-//
-//        if (id.contains("<<")) {
-//            return "RETURN " + id + " EXIT " + baseID + ":" + returnValue;
-//        } else {
-//            return "RETURN EXIT " + baseID + ":" + returnValue;
-//        }
-//    }
+    @Override
+    public String toString() {
+        String baseID = id.split("<<")[0];
+        if (id.contains("<<")) {
+            return "RETURN " + this.id + " EXIT " + baseID + ": " + this.returnValue;
+        } else {
+            return "RETURN EXIT " + baseID + ": " + this.returnValue;
+        }
+    }
 }
