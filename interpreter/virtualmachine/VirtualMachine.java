@@ -98,8 +98,8 @@ public class VirtualMachine {
     }
 
     // To store into a variable from the runtime stack.
-    public void store(int offset) {
-        runTimeStack.store(offset);
+    public int store(int offset) {
+        return runTimeStack.store(offset);
     }
 
     // To load a variable onto the runtime stack.
