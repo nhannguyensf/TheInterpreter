@@ -12,11 +12,6 @@ public class ArgsCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-        // No initialization needed
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         vm.newFrameAt(numArgs);
     }

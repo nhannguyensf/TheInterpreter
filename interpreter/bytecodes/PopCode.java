@@ -15,11 +15,6 @@ public class PopCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         for (int i = 0; i < this.popCount && !vm.runTimeStackIsEmpty(); ++i) {
             vm.popRunStack();

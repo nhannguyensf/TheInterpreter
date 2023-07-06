@@ -17,11 +17,6 @@ public class StoreCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
      //   value = vm.popRunStack();
            value =  vm.store(offset);

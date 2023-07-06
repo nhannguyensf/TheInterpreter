@@ -5,16 +5,12 @@ import interpreter.virtualmachine.VirtualMachine;
 import java.util.List;
 
 public class ReturnCode implements ByteCode {
-    private String id = "";
+    private String id;
     private int returnValue;
 
     public ReturnCode(String[] args) {
-    }
-
-    @Override
-    public void init(List<String> args) {
-        if (!args.isEmpty()) {
-            this.id = args.get(0);
+        if (args.length > 1) {
+            this.id = args[1];
         }
     }
 
@@ -38,11 +34,11 @@ public class ReturnCode implements ByteCode {
 
     @Override
     public String toString() {
-        String baseID = id.split("<<")[0];
-        if (id.contains("<<")) {
-            return "RETURN " + this.id + " EXIT " + baseID + ": " + this.returnValue;
-        } else {
-            return "RETURN EXIT " + baseID + ": " + this.returnValue;
+        String base = "RETURN";
+        if (this.id != null) {
+            String baseID = this.id.split("<<")[0];
+            base += " " + this.id + "  EXIT " + baseID + " : " + this.returnValue;
         }
+        return base;
     }
 }

@@ -16,11 +16,6 @@ public class LitCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         vm.pushRunStack(this.valueToPush);
     }

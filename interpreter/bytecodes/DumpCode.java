@@ -12,10 +12,6 @@ public class DumpCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         if (mode.equals("ON")) {
             vm.setDumping(true);
@@ -26,7 +22,7 @@ public class DumpCode implements ByteCode {
 
     @Override
     public String toString() {
-        // Dump bytecode is to not be dumped.
+        // Dump bytecode is to not be dumped, this should have never been called.
         return "";
     }
 }
