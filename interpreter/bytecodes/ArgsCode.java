@@ -2,8 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.List;
-
 public class ArgsCode implements ByteCode {
     private int numArgs;
 

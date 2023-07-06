@@ -45,7 +45,7 @@ class RunTimeStack {
 
     public void push(int value) {
         if (this.runTimeStack.size() >= STACK_OVERFLOW_THRESHOLD) {
-            throw new RuntimeException("Stack overflow");
+            throw new RuntimeException("Stack overflow. The entered number maybe too big");
         }
         this.runTimeStack.add(value);
     }
@@ -118,20 +118,4 @@ class RunTimeStack {
         }
         return new ArrayList<>();
     }
-//    public static void main(String[] args) {
-//        RunTimeStack rts = new RunTimeStack();
-//        rts.push(1);
-//        rts.push(2);
-//        rts.push(3);
-//        rts.push(4);
-//        rts.push(5);
-//        rts.push(6);
-//        rts.push(7);
-//        rts.push(8);
-//        rts.framePointer.push(0);
-//        rts.framePointer.push(3);
-//        rts.framePointer.push(6);
-//        System.out.println(rts.peek());
-//        System.out.print(rts.dump());
-//    }
 }

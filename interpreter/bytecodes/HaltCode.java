@@ -2,8 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.List;
-
 public class HaltCode implements ByteCode {
     public HaltCode(String[] args) {
         // Halt takes no arguments, so there's nothing to do here.

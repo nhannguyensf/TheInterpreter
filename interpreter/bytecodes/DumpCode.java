@@ -2,8 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.List;
-
 public class DumpCode implements ByteCode {
     private String mode;
 

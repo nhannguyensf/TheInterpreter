@@ -2,8 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.List;
-
 public class FalseBranchCode implements ByteCode {
     private String label;
     private int targetAddress;

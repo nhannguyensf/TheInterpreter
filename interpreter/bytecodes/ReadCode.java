@@ -2,7 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class ReadCode implements ByteCode {
