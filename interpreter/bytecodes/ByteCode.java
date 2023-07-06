@@ -27,9 +27,5 @@ public interface ByteCode {
         };
     }
 
-    void init(List<String> args);
-
     void execute(VirtualMachine vm);
-
-    String toString(VirtualMachine vm);
 }

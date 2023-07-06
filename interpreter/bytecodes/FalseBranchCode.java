@@ -13,11 +13,6 @@ public class FalseBranchCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         if (vm.popRunStack() == 0) {
             vm.setProgramCounter(this.targetAddress);
@@ -33,7 +28,7 @@ public class FalseBranchCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "FALSEBRANCH " + this.label;
     }
 }

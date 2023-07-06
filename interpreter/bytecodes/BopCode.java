@@ -12,10 +12,6 @@ public class BopCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         int secondOperand = vm.popRunStack();
         int firstOperand = vm.popRunStack();
@@ -38,7 +34,7 @@ public class BopCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "BOP " + operator;
     }
 }

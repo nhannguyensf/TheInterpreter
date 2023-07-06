@@ -1,6 +1,8 @@
 package interpreter.virtualmachine;
 
 import interpreter.bytecodes.ByteCode;
+import interpreter.bytecodes.DumpCode;
+import interpreter.bytecodes.HaltCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class VirtualMachine {
     private final Program program;
     private int programCounter;
     private boolean isRunning;
-    private boolean isDumping;
+    private boolean isDumping = false;
 
     public VirtualMachine(Program program) {
         this.program = program;
@@ -29,6 +31,10 @@ public class VirtualMachine {
         while (isRunning) {
             ByteCode code = program.getCode(programCounter);
             code.execute(this);
+            if (this.isDumping && !((code instanceof HaltCode)||(code instanceof DumpCode))) {
+                System.out.println(code);
+                System.out.println(this.runTimeStack.dump());
+            }
             programCounter++;
         }
     }
@@ -92,8 +98,8 @@ public class VirtualMachine {
     }
 
     // To store into a variable from the runtime stack.
-    public void store(int offset) {
-        runTimeStack.store(offset);
+    public int store(int offset) {
+        return runTimeStack.store(offset);
     }
 
     // To load a variable onto the runtime stack.

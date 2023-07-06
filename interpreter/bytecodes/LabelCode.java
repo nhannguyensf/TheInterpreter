@@ -12,16 +12,12 @@ public class LabelCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         // No functionality for LabelCode
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "LABEL " + label;
     }
 

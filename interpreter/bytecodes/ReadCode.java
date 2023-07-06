@@ -10,11 +10,6 @@ public class ReadCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-        // No initialization needed
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         Scanner scanner = new Scanner(System.in);
         int value = 0;
@@ -35,7 +30,7 @@ public class ReadCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "READ";
     }
 }

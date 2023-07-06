@@ -13,10 +13,6 @@ public class GotoCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         vm.setProgramCounter(this.targetAddress);
     }
@@ -30,7 +26,7 @@ public class GotoCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "GOTO " + this.label;
     }
 }

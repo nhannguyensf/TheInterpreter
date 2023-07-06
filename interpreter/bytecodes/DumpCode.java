@@ -6,12 +6,9 @@ import java.util.List;
 
 public class DumpCode implements ByteCode {
     private String mode;
-    public DumpCode(String[] args) {
-    }
 
-    @Override
-    public void init(List<String> args) {
-        mode = args.get(0);
+    public DumpCode(String[] args) {
+        this.mode = args[1];
     }
 
     @Override
@@ -24,7 +21,8 @@ public class DumpCode implements ByteCode {
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
-        return "DUMP " + mode;
+    public String toString() {
+        // Dump bytecode is to not be dumped, this should have never been called.
+        return "";
     }
 }

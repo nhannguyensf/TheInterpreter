@@ -10,18 +10,13 @@ public class HaltCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         vm.halt();
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
-        // Halt bytecode is to not be dumped.
+    public String toString() {
+        // Halt bytecode is to not be dumped, this should have never been called.
         return "";
     }
 }

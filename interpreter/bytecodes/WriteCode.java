@@ -9,18 +9,13 @@ public class WriteCode implements ByteCode {
     }
 
     @Override
-    public void init(List<String> args) {
-        // No initialization needed
-    }
-
-    @Override
     public void execute(VirtualMachine vm) {
         int topValue = vm.peekRunStack();
         System.out.println(topValue);
     }
 
     @Override
-    public String toString(VirtualMachine vm) {
+    public String toString() {
         return "WRITE";
     }
 }

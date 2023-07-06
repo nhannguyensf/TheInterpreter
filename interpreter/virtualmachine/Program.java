@@ -50,9 +50,6 @@ public class Program {
             String label = labelCode.getLabel();
             int address = program.size() - 1; // Index of the label in the program list
             labelAddresses.put(label, address);
-
-            // Print the label and address for verification
-            System.out.println("Added label: " + label + ", Address: " + address);
         }
     }
 
