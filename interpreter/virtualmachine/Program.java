@@ -21,15 +21,6 @@ public class Program {
     }
 
     /**
-     * Gets the size of the current program.
-     *
-     * @return size of program
-     */
-    public int getSize() {
-        return program.size();
-    }
-
-    /**
      * Grabs an instance of a bytecode at an index.
      *
      * @param programCounter index of bytecode to get.
@@ -85,9 +76,5 @@ public class Program {
                 falseBranchCode.setTargetAddress(address);
             }
         }
-    }
-
-    public int getLabelAddress(String label) {
-        return this.labelAddresses.get(label);
     }
 }
