@@ -3,6 +3,7 @@ package interpreter.virtualmachine;
 import interpreter.bytecodes.ByteCode;
 import interpreter.bytecodes.DumpCode;
 import interpreter.bytecodes.HaltCode;
+import interpreter.bytecodes.NotDumpable;
 
 import java.util.List;
 import java.util.Stack;
@@ -30,7 +31,7 @@ public class VirtualMachine {
         while (isRunning) {
             ByteCode code = program.getCode(programCounter);
             code.execute(this);
-            if (this.isDumping && !((code instanceof HaltCode)||(code instanceof DumpCode))) {
+            if (this.isDumping && !(code instanceof NotDumpable)) {
                 System.out.println(code);
                 System.out.println(this.runTimeStack.dump());
             }
