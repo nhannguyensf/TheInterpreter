@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class CallCode implements ByteCode {
+public class CallCode extends JumpCode {
     private String label;
     private String baseID;
     private String args = "";
@@ -20,21 +20,21 @@ public class CallCode implements ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         vm.pushReturnAddress(vm.getProgramCounter());
-        vm.setProgramCounter(targetAddress);
-        String argsToString = (vm.getFrameArguments().toString()).replace(" ","");
-        this.args = argsToString.substring(1, argsToString.length()-1);
-    }
-
-    public void setAddress(int address) {
-        this.targetAddress = address;
+        vm.setProgramCounter(this.targetAddress);
+        String argsToString = (vm.getFrameArguments().toString()).replace(" ", "");
+        this.args = argsToString.substring(1, argsToString.length() - 1);
     }
 
     public String getLabel() {
         return this.label;
     }
 
+    public void setTargetAddress(int targetAddress) {
+        this.targetAddress = targetAddress;
+    }
+
     @Override
     public String toString() {
-        return "CALL " + this.label + "\t" + baseID + "(" + this.args + ")";
+        return "CALL " + this.label + "\t" + this.baseID + "(" + this.args + ")";
     }
 }
