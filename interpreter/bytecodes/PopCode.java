@@ -14,7 +14,7 @@ public class PopCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        for (int i = 0; i < this.popCount && !vm.runTimeStackIsEmpty(); ++i) {
+        for (int i = 0; i < Math.min(this.popCount, vm.getStackSize()); ++i) {
             vm.popRunStack();
         }
     }

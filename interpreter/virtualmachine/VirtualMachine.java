@@ -110,4 +110,8 @@ public class VirtualMachine {
     public void setDumping(boolean dumping) {
         this.isDumping = dumping;
     }
+
+    public int getStackSize() {
+        return this.runTimeStack.getSize();
+    }
 }
