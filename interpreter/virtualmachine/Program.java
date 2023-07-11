@@ -53,27 +53,13 @@ public class Program {
      */
     public void resolveAddress() {
         for (ByteCode code : program) {
-            if (code instanceof GotoCode gotoCode) {
-                String label = gotoCode.getLabel();
+            if (code instanceof JumpCode jumpCode) {
+                String label = jumpCode.getLabel();
                 Integer address = labelAddresses.get(label);
                 if (address == null) {
                     throw new IllegalArgumentException("Label not found: " + label);
                 }
-                gotoCode.setTargetAddress(address);
-            } else if (code instanceof CallCode callCode) {
-                String label = callCode.getLabel();
-                Integer address = labelAddresses.get(label);
-                if (address == null) {
-                    throw new IllegalArgumentException("Label not found: " + label);
-                }
-                callCode.setAddress(address);
-            } else if (code instanceof FalseBranchCode falseBranchCode) {
-                String label = falseBranchCode.getLabel();
-                Integer address = labelAddresses.get(label);
-                if (address == null) {
-                    throw new IllegalArgumentException("Label not found: " + label);
-                }
-                falseBranchCode.setTargetAddress(address);
+                jumpCode.setTargetAddress(address);
             }
         }
     }

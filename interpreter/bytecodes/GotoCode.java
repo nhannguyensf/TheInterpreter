@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class GotoCode implements ByteCode {
+public class GotoCode extends JumpCode {
     private String label;
     private int targetAddress;
 
