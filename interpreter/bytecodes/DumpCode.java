@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class DumpCode implements ByteCode {
+public class DumpCode implements ByteCode,NotDumpable {
     private String mode;
 
     public DumpCode(String[] args) {

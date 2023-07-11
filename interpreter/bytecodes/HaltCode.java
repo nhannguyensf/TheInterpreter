@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class HaltCode implements ByteCode {
+public class HaltCode implements ByteCode,NotDumpable {
     public HaltCode(String[] args) {
         // Halt takes no arguments, so there's nothing to do here.
     }
