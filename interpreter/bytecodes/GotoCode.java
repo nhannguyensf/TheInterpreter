@@ -3,9 +3,6 @@ package interpreter.bytecodes;
 import interpreter.virtualmachine.VirtualMachine;
 
 public class GotoCode extends JumpCode {
-    private String label;
-    private int targetAddress;
-
     public GotoCode(String[] args) {
         this.label = args[1];
     }
@@ -13,14 +10,6 @@ public class GotoCode extends JumpCode {
     @Override
     public void execute(VirtualMachine vm) {
         vm.setProgramCounter(this.targetAddress);
-    }
-
-    public String getLabel() {
-        return this.label;
-    }
-
-    public void setTargetAddress(int targetAddress) {
-        this.targetAddress = targetAddress;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package interpreter.bytecodes;
 
 public abstract class JumpCode implements ByteCode {
-    private String label;
-    private int targetAddress;
+    protected String label;
+    protected int targetAddress;
 
     public JumpCode() {
     }

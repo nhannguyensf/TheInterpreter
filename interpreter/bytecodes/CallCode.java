@@ -3,10 +3,8 @@ package interpreter.bytecodes;
 import interpreter.virtualmachine.VirtualMachine;
 
 public class CallCode extends JumpCode {
-    private String label;
     private String baseID;
     private String args = "";
-    private int targetAddress;
 
     public CallCode(String[] args) {
         this.label = args[1];
@@ -23,14 +21,6 @@ public class CallCode extends JumpCode {
         vm.setProgramCounter(this.targetAddress);
         String argsToString = (vm.getFrameArguments().toString()).replace(" ", "");
         this.args = argsToString.substring(1, argsToString.length() - 1);
-    }
-
-    public String getLabel() {
-        return this.label;
-    }
-
-    public void setTargetAddress(int targetAddress) {
-        this.targetAddress = targetAddress;
     }
 
     @Override
