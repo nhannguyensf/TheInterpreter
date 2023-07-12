@@ -1,8 +1,6 @@
 package interpreter.virtualmachine;
 
 import interpreter.bytecodes.ByteCode;
-import interpreter.bytecodes.DumpCode;
-import interpreter.bytecodes.HaltCode;
 import interpreter.bytecodes.NotDumpable;
 
 import java.util.List;
@@ -111,7 +109,7 @@ public class VirtualMachine {
         this.isDumping = dumping;
     }
 
-    public int getStackSize() {
-        return this.runTimeStack.getSize();
+    public int getFrameSize() {
+        return this.runTimeStack.getSize()-runTimeStack.getFramePointerPeek()-1;
     }
 }
